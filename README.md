@@ -1,0 +1,2 @@
+# pysudoku
+sukodu by python
