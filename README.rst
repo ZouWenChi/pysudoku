@@ -1,6 +1,6 @@
 You have to modify the matrix in the file *sukodu.py*, for example::
 
-::
+.. code:: python
 matrix = [
     #[0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 2, 1, 0, 7, 0, 0, 0, 5],
@@ -15,6 +15,7 @@ matrix = [
 ]
 
 then you can run the file to get a solution like::
+.. code:: python
 8 2 1 6 7 4 3 9 5 
 4 5 9 8 3 1 2 6 7 
 7 6 3 2 5 9 4 1 8 
