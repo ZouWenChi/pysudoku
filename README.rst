@@ -13,7 +13,7 @@ You have to modify the matrix in the file *sukodu.py*, for example::
 |    [9, 0, 6, 0, 1, 5, 0, 0, 0],
 |]
 
-then you can run the file to get a solution like::
+|then you can run the file to get a solution like::
 |  8 2 1 6 7 4 3 9 5 
 |  4 5 9 8 3 1 2 6 7 
 |  7 6 3 2 5 9 4 1 8 
