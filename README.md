@@ -4,7 +4,7 @@ sukodu by python
 You have to modify the matrix in the file *sudoku.py*, then you can run it to get the solution.
 for example,
 
-:
+::
 matrix = [   
 [0, 2, 1, 0, 7, 0, 0, 0, 5],    
 [0, 0, 0, 8, 3, 0, 2, 0, 0],    
