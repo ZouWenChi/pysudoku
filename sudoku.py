@@ -23,6 +23,8 @@ class Situation:
     def getChoices(self, x, y, diagonal=False):
         """
         get selective numbers of a point that is empty
+        if diagonal is True, then the diagonal elements must be the set
+        of 1, 2, 3, ...
         """
         s = set(range(1, self.matrixDimension + 1))
 
@@ -82,7 +84,9 @@ class Situation:
         return point, choices
 
 
-def solve(matrix):
+def solve(matrix, all=True):
+
+    all_situation = []
     s = Situation(matrix)
     stack = []
     next = True
@@ -91,10 +95,13 @@ def solve(matrix):
             point, choices = s.getMinChoice()
 
         if point == (None, None):
-            return s
+            all_situation.append(s)
+            if not all:
+                break
+
         if not choices:
             if not stack:
-                return None
+                break
             else:
                 s, point, choices = stack.pop()
                 next = False
@@ -105,6 +112,7 @@ def solve(matrix):
         s.matrix[point[0]][point[1]] = v
         next = True
 
+    return all_situation
 
 def main():
     matrix = """
@@ -118,15 +126,25 @@ def main():
     2 1 5 3 0 0 0 7 0
     9 0 6 0 1 5 0 0 0
     """
+    matrix = """
+    0 0 3 0 2 1 0 0 0 
+    5 0 0 0 0 9 1 0 0 
+    0 0 1 3 0 0 8 7 0 
+    0 5 6 0 0 8 0 0 0 
+    0 0 0 0 0 0 0 0 6 
+    0 0 0 9 5 0 3 0 0 
+    2 0 8 0 0 0 0 0 7 
+    1 0 0 6 0 0 9 4 0 
+    3 0 0 0 9 0 0 0 0 
+    """
+
     matrix = matrix.strip()
     matrix = matrix.split('\n')
     matrix = [[int(x) for x in row.split()] for row in matrix]
-    s = solve(matrix)
-    if not s:
-        print("This situation is no solution!")
-        return
+    all_situation = solve(matrix)
 
-    s.mprint()
+    for s in all_situation:
+        s.mprint()
 
 
 if __name__ == "__main__":
