@@ -22,7 +22,7 @@ class Situation:
 
     def getChoices(self, x, y, diagonal=False):
         """
-        get selective numbers of a point that is empty 
+        get selective numbers of a point that is empty
         """
         s = set(range(1, self.matrixDimension + 1))
 
@@ -57,7 +57,7 @@ class Situation:
             for i in range(self.matrixDimension):
                 v = self.matrix[i][self.matrixDimension - i - 1]
                 if v and v in s:
-                    remove(v)
+                    s.remove(v)
 
         return s
 
@@ -105,28 +105,29 @@ def solve(matrix):
         s.matrix[point[0]][point[1]] = v
         next = True
 
-matrix = [
-    #[0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 2, 1, 0, 7, 0, 0, 0, 5],
-    [0, 0, 0, 8, 3, 0, 2, 0, 0],
-    [7, 6, 0, 0, 0, 9, 4, 0, 8],
-    [5, 9, 0, 0, 8, 3, 7, 2, 0],
-    [0, 0, 0, 5, 0, 0, 1, 0, 9],
-    [0, 8, 0, 7, 0, 6, 0, 4, 3],
-    [3, 0, 0, 9, 2, 0, 6, 5, 0],
-    [2, 1, 5, 3, 0, 0, 0, 7, 0],
-    [9, 0, 6, 0, 1, 5, 0, 0, 0],
-
-]
-
 
 def main():
+    matrix = """
+    0 2 1 0 7 0 0 0 5
+    0 0 0 8 3 0 2 0 0
+    7 6 0 0 0 9 4 0 8
+    5 9 0 0 8 3 7 2 0
+    0 0 0 5 0 0 1 0 9
+    0 8 0 7 0 6 0 4 3
+    3 0 0 9 2 0 6 5 0
+    2 1 5 3 0 0 0 7 0
+    9 0 6 0 1 5 0 0 0
+    """
+    matrix = matrix.strip()
+    matrix = matrix.split('\n')
+    matrix = [[int(x) for x in row.split()] for row in matrix]
     s = solve(matrix)
-    if s == None:
+    if not s:
         print("This situation is no solution!")
         return
 
     s.mprint()
+
 
 if __name__ == "__main__":
     t0 = time.time()
