@@ -5,20 +5,7 @@ import sudoku
 
 
 def generate_situation():
-    matrix = """
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    0 0 0 0 0 0 0 0 0
-    """
-    matrix = matrix.strip()
-    matrix = matrix.split('\n')
-    matrix = [[int(x) for x in row.split()] for row in matrix]
+    matrix = [[0 for j in range(9)] for i in range(9)]
     all_situation = sudoku.solve(matrix, False)
     if all_situation:
         return all_situation[0]
@@ -65,9 +52,10 @@ def make_emptinesses(s):
         if not solve_only_one(trial):
             s.matrix[x][y] = temp
         print(x, y)
-        s.mprint()
+        #s.mprint()
 
     return s
+
 
 def main():
     s = generate_situation()

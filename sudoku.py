@@ -114,6 +114,7 @@ def solve(matrix, all=True):
 
     return all_situation
 
+
 def main():
     matrix = """
     0 2 1 0 7 0 0 0 5
@@ -127,24 +128,26 @@ def main():
     9 0 6 0 1 5 0 0 0
     """
     matrix = """
-    0 0 3 0 2 1 0 0 0 
-    5 0 0 0 0 9 1 0 0 
-    0 0 1 3 0 0 8 7 0 
-    0 5 6 0 0 8 0 0 0 
-    0 0 0 0 0 0 0 0 6 
-    0 0 0 9 5 0 3 0 0 
-    2 0 8 0 0 0 0 0 7 
-    1 0 0 6 0 0 9 4 0 
-    3 0 0 0 9 0 0 0 0 
-    """
+5 7 0 0 0 0 3 0 0 
+0 0 0 4 0 0 0 0 8 
+6 0 2 0 0 0 0 5 0 
+0 0 0 6 0 8 9 0 0 
+7 0 0 0 0 0 0 0 0 
+2 1 0 0 0 0 0 3 0 
+0 0 0 7 0 4 0 0 3 
+1 0 0 2 0 0 4 0 0 
+0 4 0 8 0 5 6 0 7    
+"""
 
     matrix = matrix.strip()
     matrix = matrix.split('\n')
     matrix = [[int(x) for x in row.split()] for row in matrix]
     all_situation = solve(matrix)
 
+    print("=" * 20)
     for s in all_situation:
         s.mprint()
+        print("-" * 20)
 
 
 if __name__ == "__main__":
